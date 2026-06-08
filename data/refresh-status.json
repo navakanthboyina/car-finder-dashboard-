@@ -1,0 +1,13 @@
+{
+  "criteria": {
+    "maxMileage": 45000,
+    "maxPrice": 40000,
+    "minimumResale": 81,
+    "radiusMiles": 50,
+    "zipCode": "75038"
+  },
+  "lastRunIso": null,
+  "lastRunLocal": null,
+  "results": [],
+  "summary": "Waiting for the first scheduled GitHub Actions refresh."
+}
