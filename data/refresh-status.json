@@ -4,10 +4,14 @@
     "maxPrice": 40000,
     "minimumResale": 81,
     "radiusMiles": 50,
+    "requiredFeatures": [
+      "true panoramic roof/moonroof",
+      "360-degree/surround-view camera evidence"
+    ],
     "zipCode": "75038"
   },
-  "lastRunIso": "2026-06-08T00:00:00-05:00",
-  "lastRunLocal": "Jun 8, 2026 source-checked manual refresh",
+  "lastRunIso": "2026-06-08T12:14:32-05:00",
+  "lastRunLocal": "Jun 8, 2026, 12:14 PM CDT source-checked manual refresh",
   "results": [],
-  "summary": "13/20 source-checked Great Value exact VIN links active; Good Value and Fair Value listings are excluded. Scheduled GitHub Actions refreshes will continue link checks."
+  "summary": "13/20 source-checked Great Value exact VIN links active; next refresh will also require 360-camera/surround-view evidence."
 }

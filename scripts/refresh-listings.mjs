@@ -13,6 +13,14 @@ const unavailableTerms = [
   "this page is in the shop",
   "oops!"
 ];
+const cameraPatterns = [
+  { label: "360-degree camera", pattern: /\b360\s?[-]?\s?(degree|view|camera|surround)\b/i },
+  { label: "surround-view camera", pattern: /\bsurround[-\s]?view(?:\s+(camera|monitor|system))?\b/i },
+  { label: "around-view camera", pattern: /\baround[-\s]?view(?:\s+(camera|monitor|system))?\b/i },
+  { label: "bird's-eye view", pattern: /\bbird['’]?s[-\s]?eye\s+view\b/i },
+  { label: "multi-view camera", pattern: /\bmulti[-\s]?view\s+(camera|monitor|system)\b/i },
+  { label: "aerial-view camera", pattern: /\baerial\s+view\s+(camera|monitor|system)\b/i }
+];
 
 function fakeElement() {
   return {
@@ -64,6 +72,12 @@ function normalize(text) {
   return text.replace(/\s+/g, " ").trim();
 }
 
+function getCameraSignals(text) {
+  return cameraPatterns
+    .filter(({ pattern }) => pattern.test(text))
+    .map(({ label }) => label);
+}
+
 async function fetchWithTimeout(url, timeoutMs = 25000) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
@@ -93,17 +107,21 @@ async function checkVehicle(vehicle) {
     const body = normalize(page.body);
     const lower = body.toLowerCase();
     const badMatches = unavailableTerms.filter((term) => lower.includes(term));
+    const cameraSignals = getCameraSignals(body);
     const hasVin = body.includes(vehicle.vin);
     const hasPrice = /\$\s?\d{2,3},\d{3}/.test(body);
     const hasMileage = /\d{1,3},\d{3}\s*(miles|mi\.?)/i.test(body);
-    const active = page.ok && hasVin && badMatches.length === 0;
+    const hasRequiredCamera = cameraSignals.length > 0;
+    const active = page.ok && hasVin && hasRequiredCamera && badMatches.length === 0;
 
     return {
+      cameraSignals,
       checkedAt,
       dealer: vehicle.dealer,
       finalUrl: page.finalUrl,
       hasMileage,
       hasPrice,
+      hasRequiredCamera,
       hasVin,
       listingUrl: vehicle.listingUrl,
       name: vehicle.name,
@@ -134,6 +152,7 @@ async function main() {
     console.log(JSON.stringify({
       activeVehicleCount: dashboard.activeVehicles.length,
       minimumResale: dashboard.minimumResale,
+      requiredCameraEvidence: "360-degree/surround-view/around-view/bird's-eye/multi-view camera",
       target: dashboard.verifiedTarget,
       vins: dashboard.activeVehicles.map((vehicle) => vehicle.vin)
     }, null, 2));
@@ -158,12 +177,16 @@ async function main() {
       maxPrice: 40000,
       minimumResale: dashboard.minimumResale,
       radiusMiles: 50,
+      requiredFeatures: [
+        "true panoramic roof/moonroof",
+        "360-degree/surround-view camera evidence"
+      ],
       zipCode: "75038"
     },
     lastRunIso: now.toISOString(),
     lastRunLocal: formatDateTime(now),
     results,
-    summary: `${results.length - unavailableVins.length}/${dashboard.verifiedTarget} exact VIN links active; ${unavailableVins.length} flagged for review.`
+    summary: `${results.length - unavailableVins.length}/${dashboard.verifiedTarget} exact VIN links active with required 360-camera evidence; ${unavailableVins.length} flagged for review.`
   };
 
   await fs.mkdir(new URL("../data/", import.meta.url), { recursive: true });

@@ -427,6 +427,17 @@ input[type="range"] {
   background: rgba(213, 170, 75, 0.18);
 }
 
+.badge-row:not(:has(.badge.warn))::after {
+  content: "Next refresh: 360 camera proof";
+  border: 1px solid rgba(20, 33, 31, 0.12);
+  border-radius: 999px;
+  background: rgba(213, 170, 75, 0.18);
+  color: #7a5022;
+  padding: 7px 10px;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
 .score-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -460,6 +471,18 @@ input[type="range"] {
   background:
     linear-gradient(180deg, rgba(255, 250, 240, 0.78), rgba(238, 228, 210, 0.58));
   padding: 18px;
+}
+
+.vehicle-card:not(:has(.badge.warn)) .cost-card::after {
+  content: "Next refresh feature rule: 360-degree, surround-view, around-view, bird's-eye, multi-view, or equivalent camera evidence required. A normal backup camera alone will not count.";
+  display: block;
+  margin-top: 14px;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  color: #7a5022;
+  font-size: 0.88rem;
+  font-weight: 800;
+  line-height: 1.5;
 }
 
 .cost-header {
