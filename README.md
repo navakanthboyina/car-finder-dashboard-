@@ -44,7 +44,7 @@ automated scraping. Keep exact new VINs in the dashboard data, then the schedule
 job will keep them honest.
 
 Data was refreshed on June 8, 2026 from live dealer detail pages, exact CARFAX
-VIN pages, manufacturer CPO pages, and official trim/spec sources for panoramic-roof proof. Model-level
+VIN pages, CARFAX inventory pages, manufacturer CPO pages, and official trim/spec sources for panoramic-roof proof. Model-level
 reliability, resale, and ownership-cost signals were cross-checked against
 RepairPal, Kelley Blue Book, and manufacturer trim/spec references. The dashboard
 intentionally excludes cars that only have aggregator evidence from Capital One,
@@ -54,17 +54,22 @@ Availability, price, incentives, and vehicle-history reports can change daily, s
 request a fresh VIN history report and a pre-purchase inspection before
 committing.
 
-The current live-link refresh found 20 listings with resale scores above 80,
+The current source-checked refresh found 13 listings with resale scores above 80,
 exact VIN links, clean CARFAX/dealer evidence, panoramic-roof proof, mileage at
-or below 45,000, and pricing under $40,000. The dashboard stays intentionally
-strict instead of padding with stale, damaged, dead-link, small-sunroof, or
-poor-resale results.
+or below 45,000, pricing under $40,000, and CARFAX `Great Value` deal signals.
+The dashboard stays intentionally strict instead of padding with stale, damaged,
+dead-link, small-sunroof, Good Value, Fair Value, or poor-resale results.
 
-June 8, 2026 refresh note: the verified count is `20/20`. The active dashboard
-now includes Acura, Honda, Hyundai, Kia, Lincoln, and Mazda matches. No brand is
-blocked automatically, including luxury brands; every VIN is judged by the same
-live-link, clean-history, roof, rear-comfort, resale, market-price, mileage, and
-ownership-risk rules.
+June 8, 2026 refresh note: the active count is `13/20`. The active dashboard
+now includes Acura, Honda, Kia Telluride, and Mazda CX-50-style matches that are
+explicitly marked `Great Value`. This run removes Good Value, Fair Value, and
+generic clean-history-value entries from the active dashboard even when their
+mileage, resale, and roof evidence are otherwise acceptable.
+
+Browser-audit caveat: the in-app browser rejected navigation to CARFAX and dealer
+domains during this run, so the active listings are source-checked from accessible
+CARFAX inventory/source pages and exact VIN URLs, not claimed as browser-verified.
+Do a fresh click-through audit before purchase.
 
 Every-8-hour refresh criteria:
 
@@ -78,9 +83,10 @@ Every-8-hour refresh criteria:
   inventory evidence.
 - Require resale value score above `80`; anything scored `80` or below is
   excluded from the active dashboard.
-- Require CARFAX `Great Value` or dealer-owned market-price evidence showing the
-  listing is materially under market value.
-- Before keeping a car, browser-audit the primary card link. It must load a
+- Require CARFAX `Great Value`. Good Value, Fair Value, and generic
+  clean-history-value entries are excluded from the active dashboard.
+- Before keeping a car, browser-audit the primary card link when the environment
+  permits it. It must load a
   dealer-owned vehicle detail page, manufacturer CPO page, or exact CARFAX VIN
   page, show the exact VIN, and avoid sold/no-longer-available/page-not-found
   messaging.

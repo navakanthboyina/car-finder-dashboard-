@@ -7,7 +7,7 @@
     "zipCode": "75038"
   },
   "lastRunIso": "2026-06-08T00:00:00-05:00",
-  "lastRunLocal": "Jun 8, 2026 manual live refresh",
+  "lastRunLocal": "Jun 8, 2026 source-checked manual refresh",
   "results": [],
-  "summary": "20/20 exact VIN links active after manual live refresh; 0 flagged for review. Scheduled GitHub Actions refreshes will continue rechecking these links."
+  "summary": "13/20 source-checked Great Value exact VIN links active; Good Value and Fair Value listings are excluded. Scheduled GitHub Actions refreshes will continue link checks."
 }

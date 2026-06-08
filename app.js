@@ -1,6 +1,7 @@
 const verifiedTarget = 20;
 const verifiedOn = "June 8, 2026";
 const minimumResale = 81;
+const requiredDealLabel = "Great Value";
 const unavailableVins = new Set([]);
 
 const categoryColors = {
@@ -16,9 +17,7 @@ const spec = {
   mdx: "https://di-uploads-pod2.s3.us-east-1.amazonaws.com/harmonyacura/uploads/2022/07/2023_Acura_MDX_SPECS.pdf",
   pilot: "https://www.hondainfocenter.com/2025/Pilot/Feature-Guide/Features-by-Trim/",
   cx50: "https://news.mazdausa.com/vehicles-2024-cx-50",
-  palisade: "https://www.hyundaiusa.com/us/en/vehicles/palisade",
-  telluride: "https://www.kia.com/us/en/telluride/specs",
-  nautilus: "https://www.lincoln.com/luxury-suvs/nautilus/"
+  telluride: "https://www.kia.com/us/en/telluride/specs"
 };
 
 const source = {
@@ -27,44 +26,32 @@ const source = {
   mdxDallas: "https://www.carfax.com/Used-Acura-MDX-Dallas-TX_w2_c18864",
   pilotDallas: "https://www.carfax.com/Used-Honda-Pilot-Dallas-TX_w307_c18864",
   cx50Dallas: "https://www.carfax.com/Used-Mazda-CX-50-Dallas-TX_w10241_c18864",
-  palisadeDallas: "https://www.carfax.com/Used-Hyundai-Palisade-Dallas-TX_w9602_c18864",
-  palisadeMckinney: "https://www.carfax.com/Used-Hyundai-Palisade-Mckinney-TX_w9602_c15088",
-  tellurideDallas: "https://www.carfax.com/Used-Kia-Telluride-Dallas-TX_w9533_c18864",
-  tellurideFortWorth: "https://www.carfax.com/Used-Kia-Telluride-Fort-Worth-TX_w9562_c4033",
-  nautilusDallas: "https://www.carfax.com/Used-Lincoln-Nautilus-Dallas-TX_w9529_c18864"
+  tellurideDallas: "https://www.carfax.com/Used-Kia-Telluride-Dallas-TX_w9562_c18864",
+  tellurideFortWorth: "https://www.carfax.com/Used-Kia-Telluride-Fort-Worth-TX_w9562_c4033"
 };
 
 const profile = {
   rdx: ["Panoramic roof only", "Acura RDX standard panoramic roof; not a small standard sunroof.", "5-seat rear bench", "bench", 5, 23, 650, 1960, 0.094, "#466a7f", "Strong resale/reliability value; verify three-across rear comfort in person."],
   mdx: ["Panoramic moonroof", "Acura MDX Technology spec lists panoramic moonroof.", "Flexible 3-row cabin", "adult-third-row", 7, 22, 760, 2100, 0.098, "#bd6746", "Best luxury three-row balance under the cap with Acura/Honda resale discipline."],
-  pilot: ["Panoramic moonroof", "Honda Pilot Touring/upper trims list a one-touch power panoramic moonroof.", "Best rear-seat comfort", "adult-third-row", 8, 22, 690, 1880, 0.087, "#17463f", "Best rear-seat and resale balance; inspect tires, brakes, and CPO paperwork."],
+  pilot: ["Panoramic moonroof", "Honda Pilot Touring/upper trims list a one-touch power panoramic moonroof.", "Best rear-seat comfort", "adult-third-row", 8, 22, 690, 1880, 0.087, "#17463f", "Best rear-seat and resale fit; confirm dealer add-ons do not erase the deal."],
   cx50: ["Panoramic moonroof", "Mazda CX-50 Premium/Premium Plus supports the panoramic moonroof.", "Wide 5-seat bench", "bench", 5, 27, 640, 1780, 0.106, "#8f7a4c", "Lower-cost bench option; less roomy than the three-row SUVs."],
-  palisade: ["Dual-panel moonroof", "Palisade Limited/Calligraphy trims use the larger dual-panel moonroof setup.", "Roomy 3-row cabin", "adult-third-row", 7, 22, 720, 1880, 0.108, "#596f62", "Excellent rear-seat comfort; keep only with clean history, warranty, and strong price."],
-  telluride: ["Dual-pane moonroof", "Telluride SX/SX Prestige supports a large dual-pane moonroof setup.", "Roomy 3-row cabin", "adult-third-row", 7, 20, 735, 1940, 0.105, "#384f3c", "Roomy CPO family value; verify warranty, service history, tires, and brakes."],
-  nautilus: ["Power panoramic roof", "Exact CARFAX page lists Power Panorama Sunroof.", "Luxury 5-seat rear bench", "bench", 5, 22, 820, 2050, 0.113, "#6d5b47", "Luxury two-row comfort pick; depreciation and repair costs are the tradeoff."]
+  telluride: ["Dual-pane moonroof", "Telluride SX/SX Prestige supports a large dual-pane moonroof setup.", "Roomy 3-row cabin", "adult-third-row", 7, 20, 735, 1940, 0.105, "#384f3c", "Roomy CPO family value; verify warranty, service history, tires, and brakes."]
 };
 
 const rows = [
-  ["2023 Acura MDX Technology", "Norm Reeves Mazda of Irving", "Irving, TX", 6, 36577, 37514, "5J8YD9H44PL006820", "PL006820P", "mdx", "CARFAX Great Value", 88, 89, 87, 93, source.mdxDallas, "https://www.normreeves.com/inventory/used-2023-acura-mdx-technology-fwd-4d-sport-utility-5j8yd9h44pl006820/"],
+  ["2023 Acura MDX Technology", "Norm Reeves Mazda of Irving", "Irving, TX", 6, 36588, 37514, "5J8YD9H44PL006820", "PL006820P", "mdx", "CARFAX Great Value", 88, 89, 87, 93, source.mdxDallas, "https://www.normreeves.com/inventory/used-2023-acura-mdx-technology-fwd-4d-sport-utility-5j8yd9h44pl006820/"],
   ["2024 Honda Pilot Touring CPO", "Honda Cars of Rockwall", "Rockwall, TX", 23, 37449, 42777, "5FNYG2H70RB007119", "RB007119A", "pilot", "CARFAX Great Value + Honda CPO", 90, 96, 92, 96, source.pilotDallas, ""],
-  ["2024 Hyundai Palisade Limited AWD", "Bob Tomes Ford", "McKinney, TX", 31, 38108, 18104, "KM8R5DGE4RU680018", "26T1849A", "palisade", "CARFAX Great Value", 82, 96, 82, 92, source.palisadeMckinney, ""],
-  ["2024 Hyundai Palisade Calligraphy", "Ewing Buick GMC", "Plano, TX", 19, 35219, 42201, "KM8R74GE8RU680355", "RU680355", "palisade", "CARFAX Great Value", 82, 96, 82, 88, source.palisadeDallas, ""],
-  ["2023 Lincoln Nautilus Reserve", "Planet Lincoln Dallas Love Field", "Dallas, TX", 14, 35720, 25295, "2LMPJ8K90PBL21387", "NT1560A", "nautilus", "CARFAX Great Value", 83, 88, 81, 85, source.nautilusDallas, ""],
-  ["2024 Acura RDX Technology CPO", "Grubbs Acura", "Grapevine, TX", 8, 39775, 7338, "5J8TC2H50RL034131", "RL034131", "rdx", "CARFAX Great Value + Acura CPO", 91, 82, 86, 92, "https://www.carfax.com/vehicle/5J8TC2H50RL034131", ""],
+  ["2025 Honda Pilot Touring AWD", "Graff Chevrolet Co", "Grand Prairie, TX", 11, 39918, 25215, "5FNYG1H79SB072003", "SB072003", "pilot", "CARFAX Great Value", 90, 96, 92, 94, source.pilotDallas, ""],
+  ["2024 Acura RDX Technology CPO", "Grubbs Acura", "Grapevine, TX", 8, 39775, 7338, "5J8TC2H50RL034131", "RL034131", "rdx", "CARFAX Great Value + Acura CPO", 91, 82, 86, 92, "https://www.carfax.com/vehicle/5J8TC2H50RL034131", "https://www.grubbsacura.com/used-Grapevine-2024-Acura-RDX-Technology%2BPackage%2BSH%2BAWD-5J8TC2H50RL034131"],
   ["2024 Acura RDX Base SH-AWD", "Hiley Acura of Fort Worth", "Fort Worth, TX", 31, 34716, 15950, "5J8TC2H34RL027410", "A7997A", "rdx", "CARFAX Great Value", 91, 82, 86, 91, source.rdxFortWorth, ""],
   ["2023 Acura RDX Technology", "Hiley Acura of Fort Worth", "Fort Worth, TX", 31, 34516, 15923, "5J8TC1H50PL007454", "A8175A", "rdx", "CARFAX Great Value", 91, 82, 86, 90, source.rdxFortWorth, ""],
-  ["2024 Kia Telluride SX Prestige AWD CPO", "Vanguard Kia of Arlington", "Arlington, TX", 18, 39220, 22740, "5XYP5DGC5RG500766", "232425B", "telluride", "CARFAX Great Value + Kia CPO", 82, 95, 83, 90, source.tellurideDallas, ""],
-  ["2023 Kia Telluride SX X-Line AWD CPO", "Moritz Kia Alliance", "Fort Worth, TX", 32, 37223, 31824, "5XYP5DGC2PG352783", "Y295969B", "telluride", "CARFAX Great Value + Kia CPO", 82, 95, 83, 89, source.tellurideFortWorth, ""],
+  ["2024 Kia Telluride SX Prestige AWD CPO", "Vanguard Kia of Arlington", "Arlington, TX", 18, 39220, 22740, "5XYP5DGC5RG500766", "232425B", "telluride", "CARFAX Great Value + Kia CPO", 82, 95, 83, 90, source.tellurideDallas, "https://www.kia.com/us/en/cpo/inventory/vehicle-details?view=cpo&vin=5XYP5DGC5RG500766&zipCode=75201"],
+  ["2023 Kia Telluride SX X-Line AWD CPO", "Moritz Kia Alliance", "Fort Worth, TX", 32, 37223, 31824, "5XYP5DGC2PG352783", "Y295969B", "telluride", "CARFAX Great Value + Kia CPO", 82, 95, 83, 89, source.tellurideFortWorth, "https://www.moritzkia.com/inventory/used/kia-telluride"],
+  ["2022 Kia Telluride SX CPO", "Mesquite Kia", "Mesquite, TX", 28, 34484, 25584, "5XYP54HC3NG264496", "NG264496", "telluride", "CARFAX Great Value + Kia CPO", 82, 95, 83, 88, source.tellurideDallas, ""],
   ["2025 Acura RDX Technology SH-AWD", "Hiley Acura of Fort Worth", "Fort Worth, TX", 31, 35716, 33933, "5J8TC2H59SL008522", "A8072A", "rdx", "CARFAX Great Value", 91, 82, 86, 89, source.rdxFortWorth, ""],
-  ["2023 Acura RDX Technology", "Hiley Acura of Fort Worth", "Fort Worth, TX", 31, 35756, 15313, "5J8TC1H57PL005989", "A8037A", "rdx", "CARFAX Good Value", 91, 82, 86, 88, source.rdxFortWorth, ""],
-  ["2023 Acura RDX Technology CPO", "Vandergriff Acura", "Arlington, TX", 18, 33058, 38293, "5J8TC1H50PL002318", "PL002318", "rdx", "CARFAX Good Value + Acura CPO", 91, 82, 86, 86, source.rdxDallas, ""],
-  ["2023 Acura RDX A-Spec CPO", "Vandergriff Acura", "Arlington, TX", 18, 33870, 43809, "5J8TC1H6XPL001346", "PL001346", "rdx", "CARFAX Good Value + Acura CPO", 91, 82, 86, 84, source.rdxDallas, ""],
-  ["2023 Acura RDX SH-AWD CPO", "Park Place Acura", "Plano, TX", 19, 34179, 10670, "5J8TC2H35PL021077", "MAP260733A", "rdx", "CPO clean-history value", 91, 83, 86, 89, "https://www.carfax.com/vehicle/5J8TC2H35PL021077", "https://www.parkplacelexusplano.com/used/Acura/2023-Acura-RDX-7a42abfdac181a93fdbf63e0a5a3818e.htm"],
   ["2025 Mazda CX-50 2.5 S Premium Plus", "Norm Reeves Mazda of Irving", "Irving, TX", 6, 31888, 6926, "7MMVABEM8SN378924", "SN378924R", "cx50", "CARFAX Great Value", 84, 80, 81, 88, source.cx50Dallas, ""],
   ["2024 Mazda CX-50 Turbo Premium", "Toyota of Rockwall", "Rockwall, TX", 23, 33001, 14035, "7MMVABDY1RN221573", "RN221573U", "cx50", "CARFAX Great Value", 84, 80, 81, 87, source.cx50Dallas, ""],
-  ["2024 Mazda CX-50 2.5 S Premium Plus", "Clay Cooley Nissan Richardson", "Richardson, TX", 14, 29715, 27694, "7MMVABEM6RN237764", "RN237764", "cx50", "CARFAX Great Value", 84, 80, 81, 86, "https://www.carfax.com/vehicle/7MMVABEM6RN237764", "https://www.claycooleynissanrichardson.com/viewdetails/used/7mmvabem6rn237764/2024-mazda-cx-50-sport-utility"],
-  ["2024 Acura RDX A-Spec SH-AWD", "Hiley Acura of Fort Worth", "Fort Worth, TX", 31, 37416, 40537, "5J8TC2H63RL023925", "A8024A", "rdx", "CARFAX Good Value", 91, 82, 86, 86, source.rdxFortWorth, ""],
-  ["2023 Mazda CX-50 2.5 S Premium Plus", "Hiley Mazda of Arlington", "Arlington, TX", 18, 27000, 26856, "7MMVABEM5PN151357", "V76488A", "cx50", "CARFAX Great Value", 84, 80, 81, 84, source.cx50Dallas, ""]
+  ["2024 Mazda CX-50 2.5 S Premium Plus", "Clay Cooley Nissan Richardson", "Richardson, TX", 14, 29715, 27694, "7MMVABEM6RN237764", "RN237764", "cx50", "CARFAX Great Value", 84, 80, 81, 86, "https://www.carfax.com/vehicle/7MMVABEM6RN237764", "https://www.claycooleynissanrichardson.com/viewdetails/used/7mmvabem6rn237764/2024-mazda-cx-50-sport-utility"]
 ];
 
 function formatCurrency(value) {
@@ -117,8 +104,8 @@ const activeVehicles = rows.map((row) => {
     accident: "CARFAX no accident/damage",
     accidentPublic: true,
     deal,
-    accidentDetail: `Exact CARFAX VIN page showed VIN ${vin}, no accident or damage reported, ${deal.toLowerCase()} pricing, ${formatCurrency(price)}, ${formatNumber(mileage)} miles, and stock ${stock}.`,
-    availabilityProof: `Primary exact CARFAX VIN page loaded ${verifiedOn} for VIN ${vin}. It showed price, mileage, clean-history/no-damage evidence, market-value signal, and panoramic-roof trim evidence.`,
+    accidentDetail: `Source evidence showed VIN ${vin}, no accident or damage reported, ${deal.toLowerCase()} pricing, ${formatCurrency(price)}, ${formatNumber(mileage)} miles, and stock ${stock}.`,
+    availabilityProof: `Source-checked ${verifiedOn} from CARFAX inventory or exact VIN evidence for VIN ${vin}. The active dashboard now excludes Good Value, Fair Value, and generic clean-history-value listings.`,
     reliability,
     rearComfort,
     resale,
@@ -133,12 +120,12 @@ const activeVehicles = rows.map((row) => {
     listingUrl,
     listingLabel: "Exact CARFAX VIN page",
     sourceUrl,
-    sourceLabel: sourceUrl === listingUrl ? "Exact CARFAX clean/value page" : "CARFAX/source inventory page",
+    sourceLabel: sourceUrl === listingUrl ? "Exact CARFAX clean/great-value page" : "CARFAX/source inventory page",
     historyUrl,
     roofSpecUrl: spec[key],
     tco: buildTco({ price, mpgCombined, maintenanceBase: maintenanceBase + (cpo ? -45 : 0), insuranceBase, depreciationRate })
   };
-});
+}).filter((vehicle) => vehicle.deal.includes(requiredDealLabel));
 
 const state = {
   priceMax: 40000,
@@ -178,6 +165,7 @@ function getFilteredVehicles() {
     .filter((vehicle) => vehicle.price <= state.priceMax)
     .filter((vehicle) => vehicle.mileage <= state.mileageMax)
     .filter((vehicle) => vehicle.resale >= minimumResale)
+    .filter((vehicle) => vehicle.deal.includes(requiredDealLabel))
     .filter((vehicle) => state.rearFit === "all" || vehicle.rearFit === state.rearFit)
     .filter((vehicle) => !state.accidentFreeOnly || vehicle.accidentPublic)
     .sort((a, b) => {
@@ -207,7 +195,7 @@ function renderComparison(list) {
   const maxTco = Math.max(...list.map(getTcoTotal));
   el.comparisonChart.innerHTML = list.map((vehicle) => `
     <div class="compare-row">
-      <div class="compare-label">${vehicle.name.replace(/^20\\d{2} /, "")}</div>
+      <div class="compare-label">${vehicle.name.replace(/^20\d{2} /, "")}</div>
       <div class="compare-track" aria-label="${vehicle.name} reliability ${vehicle.reliability} out of 100">
         <div class="compare-fill" style="width:${vehicle.reliability}%"></div>
       </div>
@@ -297,7 +285,7 @@ function renderCards(list) {
   el.cards.innerHTML = list.length ? list.map(renderVehicleCard).join("") : `
     <div class="empty">
       <h3>No SUVs match those filters</h3>
-      <p>These results already require panoramic roof, great-market-value pricing, clean history, under $40,000, and 45,000 miles or less.</p>
+      <p>These results already require panoramic roof, CARFAX Great Value pricing, clean history, under $40,000, and 45,000 miles or less.</p>
     </div>
   `;
 }

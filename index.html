@@ -18,8 +18,10 @@
             discipline, market-value pricing, and projected 5-year ownership cost.
             All brands are considered, including luxury brands, but each VIN has to pass
             the same clean-history, resale, roof, comfort, and ownership-risk checks.
-            The first link on every card now has to load a source-checked exact VIN page
-            from CARFAX, a dealer, or a manufacturer CPO inventory page. Small/standard sunroofs, damaged cars, sold pages,
+            The first link on every card is an exact VIN page from CARFAX, a dealer,
+            or a manufacturer CPO inventory page; this run source-checked those VINs
+            from accessible CARFAX inventory pages because external browser auditing
+            was blocked by policy. Small/standard sunroofs, damaged cars, sold pages,
             generic marketplace-only proof, over-budget pricing, and mileage above
             45,000 are excluded.
           </p>
@@ -32,14 +34,14 @@
           <span>Roof rule</span>
           <strong>Panoramic moonroof only</strong>
           <span>Deal rule</span>
-          <strong>Resale 81+ + live VIN page</strong>
+          <strong>CARFAX Great Value only</strong>
         </aside>
       </section>
 
       <section class="stats" aria-label="Dashboard summary">
         <article>
-          <span id="stat-count">20/20</span>
-          <p>verified matches / max target</p>
+          <span id="stat-count">13/20</span>
+          <p>Great Value matches / max target</p>
         </article>
         <article>
           <span id="stat-avg-price">$0</span>
@@ -116,14 +118,15 @@
             excluded from this dashboard.
           </li>
           <li>
-            The first link on every card is a source-checked exact VIN page from
-            CARFAX, a dealer-owned detail page, or a manufacturer CPO inventory page,
-            not a generic marketplace search. If that page later turns into
-            sold/no-longer-available, the next refresh should remove it instead of
-            keeping stale inventory.
+            The first link on every card is an exact VIN page from CARFAX,
+            a dealer-owned detail page, or a manufacturer CPO inventory page,
+            not a generic marketplace search. The June 8 run could not complete
+            the required browser audit because the in-app browser blocked CARFAX
+            and dealer-domain navigation; the active cars are therefore labeled
+            source-checked, not browser-verified.
           </li>
           <li>
-            The dashboard now has 20 source-checked matches. It is intentionally not
+            The dashboard now has 13 Great Value source-checked matches. It is intentionally not
             padded beyond vehicles that pass the live-link, panoramic-roof,
             clean-history, mileage, budget, resale, market-value, and comfort checks.
           </li>
@@ -132,16 +135,16 @@
             unless you intentionally raise the rule in a future refresh.
           </li>
           <li>
-            Rear comfort is prioritized over flashy trims. Pilot, Palisade, Telluride,
-            and MDX are the roomiest family picks; RDX, CX-50, and Nautilus remain
-            good choices only if three people fit comfortably across the second row.
+            Rear comfort is prioritized over flashy trims. Pilot, Telluride, and MDX
+            are the roomiest family picks; RDX and CX-50 remain good choices only if
+            three people fit comfortably across the second row.
           </li>
           <li>
-            No brand is blocked automatically. Lexus, Infiniti, Audi, Volvo, Cadillac,
-            Toyota, Hyundai, Kia, Lincoln, Nissan, Ford, Chevy, VW, Jeep, BMW, Mercedes,
-            and Genesis candidates were considered; dead exact pages, damage history,
-            over-budget pricing, weak resale, standard/small sunroof evidence, or high
-            ownership-risk signals are what removed them.
+            Toyota, Lexus, Honda, Acura, Kia Telluride, and Mazda CX-50-style
+            candidates were prioritized. Palisade, Nautilus, Pathfinder, CX-90,
+            rental-heavy, multiple-use, damaged, over-budget, over-mileage, weak-resale,
+            standard/small-sunroof, stale-source, Good Value, and Fair Value
+            candidates are removed from the active dashboard.
           </li>
           <li>
             Roof proof is intentionally strict. Each card includes an official
