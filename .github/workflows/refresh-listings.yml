@@ -1,0 +1,40 @@
+name: Refresh vehicle listings
+
+on:
+  schedule:
+    - cron: "17 */8 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-vehicle-listings
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Refresh exact VIN availability
+        run: node scripts/refresh-listings.mjs
+
+      - name: Commit refreshed dashboard data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add app.js data/refresh-status.json
+          if git diff --cached --quiet; then
+            echo "No dashboard refresh changes to commit."
+          else
+            git commit -m "Refresh vehicle listing availability"
+            git push
+          fi
