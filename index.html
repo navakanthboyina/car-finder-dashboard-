@@ -10,7 +10,7 @@
     <main class="shell">
       <section class="hero" aria-labelledby="page-title">
         <div>
-          <p class="eyebrow">Browser-audit blocked used SUV deals near 75038 · refreshed June 9, 2026 9:42 AM CDT</p>
+          <p class="eyebrow">Browser-audit blocked used SUV deals near 75038 · refreshed June 9, 2026 12:16 PM CDT</p>
           <h1 id="page-title">Clickable panoramic-roof SUVs under $40,000</h1>
           <p class="hero-copy">
             Ranked for true panoramic moonroof availability, rear-seat comfort for
@@ -18,14 +18,12 @@
             discipline, market-value pricing, and projected 5-year ownership cost.
             All brands are considered, including luxury brands, but each VIN has to pass
             the same clean-history, resale, roof, comfort, and ownership-risk checks.
-            The next successful refresh also requires 360-degree, surround-view,
-            around-view, bird's-eye, multi-view, aerial-view, or equivalent camera
-            evidence; a normal backup camera alone will not count.
             The first link on every source candidate remains an exact VIN page from
             CARFAX, a dealer, or a manufacturer CPO inventory page, but the June 9
-            in-app browser audit was blocked on CARFAX, Kia CPO, and dealer domains.
+            in-app browser audit was blocked on CARFAX, Grubbs Acura, and Kia CPO domains.
             Under the required primary-link audit rule, no SUV is currently active
-            until those exact VIN pages can be loaded and checked again.
+            until those exact VIN pages can be loaded and checked again, but the
+            retained source candidates are shown below for follow-up.
           </p>
         </div>
         <aside class="hero-card" aria-label="Search constraints">
@@ -39,8 +37,6 @@
           <strong>No accident/damage</strong>
           <span>Deal rule</span>
           <strong>CARFAX Great Value only</strong>
-          <span>Camera rule</span>
-          <strong>360/surround required</strong>
         </aside>
       </section>
 
@@ -128,15 +124,15 @@
             The first link on every card is an exact VIN page from CARFAX,
             a dealer-owned detail page, or a manufacturer CPO inventory page,
             not a generic marketplace search. The June 9 in-app browser audit could
-            not complete because CARFAX, Kia CPO, and dealer exact-page navigation
+            not complete because CARFAX, Grubbs Acura, and Kia CPO exact-page navigation
             was blocked by browser security policy, so all prior source candidates
             are flagged out of the active dashboard pending a fresh exact-page audit.
           </li>
           <li>
             The dashboard now has 0 browser-verified active matches. It still
-            retains the prior 20 source candidates in the data for follow-up, but
-            it is intentionally not padded or displayed as verified while the exact
-            primary-link audit is blocked.
+            shows the prior 20 source candidates for follow-up, but those cards are
+            labeled as needing exact-link browser audit and are not counted as
+            active verified listings.
           </li>
           <li>
             The default mileage cap is 45,000 miles. Cars above that are excluded
@@ -160,12 +156,6 @@
             treated as a match.
           </li>
           <li>
-            Camera proof is also strict for the next refresh. 360-degree,
-            surround-view, around-view, bird's-eye, multi-view, aerial-view, or
-            equivalent camera evidence is required; a normal backup camera alone
-            is not enough.
-          </li>
-          <li>
             5-year costs are modeled estimates using listing price, EPA fuel
             economy, expected depreciation, insurance, maintenance/repair risk,
             and Texas-area driving assumptions. Your financing, insurance, and
@@ -175,8 +165,7 @@
       </section>
     </main>
 
-    <script src="app.js?v=20260609"></script>
-    <script src="camera-rule.js?v=20260609"></script>
-    <script src="blocked-refresh.js?v=20260609"></script>
+    <script src="app.js?v=20260609-1245"></script>
+    <script src="fallback-candidates.js?v=20260609-1528"></script>
   </body>
 </html>
