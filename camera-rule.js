@@ -1,6 +1,6 @@
 (() => {
   const cameraLabel = "360 camera proof";
-  const cameraRule = "Next refresh will require 360-degree, surround-view, around-view, bird's-eye, multi-view, or equivalent camera evidence. A normal backup camera alone will not count.";
+  const cameraRule = "Next refresh will require 360-degree, surround-view, around-view, bird's-eye, multi-view, aerial-view, or equivalent camera evidence. A normal backup camera alone will not count.";
 
   function hasText(container, text) {
     return [...container.querySelectorAll("*")].some((element) => element.textContent.includes(text));

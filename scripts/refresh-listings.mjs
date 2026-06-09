@@ -44,7 +44,7 @@ function loadDashboardData(code) {
   };
 
   vm.createContext(context);
-  vm.runInContext(`${code}\nglobalThis.__dashboardAudit = { activeVehicles, minimumResale, verifiedTarget };`, context, {
+  vm.runInContext(`${code}\nglobalThis.__dashboardAudit = { activeVehicles, minimumResale, unavailableVins: Array.from(unavailableVins), verifiedTarget };`, context, {
     timeout: 1500
   });
 
@@ -149,12 +149,17 @@ async function main() {
   const dryRun = process.argv.includes("--dry-run");
 
   if (dryRun) {
+    const unavailableVinSet = new Set(dashboard.unavailableVins);
+    const visibleVehicles = dashboard.activeVehicles.filter((vehicle) => !unavailableVinSet.has(vehicle.vin));
+
     console.log(JSON.stringify({
-      activeVehicleCount: dashboard.activeVehicles.length,
+      activeVehicleCount: visibleVehicles.length,
+      candidateVehicleCount: dashboard.activeVehicles.length,
       minimumResale: dashboard.minimumResale,
-      requiredCameraEvidence: "360-degree/surround-view/around-view/bird's-eye/multi-view camera",
+      requiredCameraEvidence: "360-degree/surround-view/around-view/bird's-eye/multi-view/aerial-view camera",
       target: dashboard.verifiedTarget,
-      vins: dashboard.activeVehicles.map((vehicle) => vehicle.vin)
+      unavailableVins: dashboard.unavailableVins,
+      vins: visibleVehicles.map((vehicle) => vehicle.vin)
     }, null, 2));
     return;
   }
@@ -179,6 +184,7 @@ async function main() {
       radiusMiles: 50,
       requiredFeatures: [
         "true panoramic roof/moonroof",
+        "clean CARFAX/dealer no-accident/no-damage evidence",
         "360-degree/surround-view camera evidence"
       ],
       zipCode: "75038"
@@ -186,7 +192,7 @@ async function main() {
     lastRunIso: now.toISOString(),
     lastRunLocal: formatDateTime(now),
     results,
-    summary: `${results.length - unavailableVins.length}/${dashboard.verifiedTarget} exact VIN links active with required 360-camera evidence; ${unavailableVins.length} flagged for review.`
+    summary: `${results.length - unavailableVins.length}/${dashboard.verifiedTarget} exact VIN links active under strict price, mileage, roof, resale, clean-history, 360-camera, and Great Value rules; ${unavailableVins.length} flagged for review.`
   };
 
   await fs.mkdir(new URL("../data/", import.meta.url), { recursive: true });
