@@ -1,8 +1,22 @@
 const verifiedTarget = 20;
-const verifiedOn = "June 8, 2026";
+const verifiedOn = "June 9, 2026";
 const minimumResale = 81;
 const requiredDealLabel = "Great Value";
-const unavailableVins = new Set([]);
+const unavailableVins = new Set([
+  "5FNYG1H79SB072003",
+  "5FNYG2H70RB007119",
+  "5J8TC1H50PL007454",
+  "5J8TC2H34RL027410",
+  "5J8TC2H50RL034131",
+  "5J8TC2H59SL008522",
+  "5J8YD9H44PL006820",
+  "5XYP54HC3NG264496",
+  "5XYP5DGC2PG352783",
+  "5XYP5DGC5RG500766",
+  "7MMVABDY1RN221573",
+  "7MMVABEM6RN237764",
+  "7MMVABEM8SN378924"
+]);
 
 const categoryColors = {
   depreciation: "#17463f",
