@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DFW Panoramic SUV Deal Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">Browser-audit blocked used SUV deals near 75038 · refreshed June 9, 2026 12:16 PM CDT</p>
+          <h1 id="page-title">Clickable panoramic-roof SUVs under $40,000</h1>
+          <p class="hero-copy">
+            Ranked for true panoramic moonroof availability, rear-seat comfort for
+            three, clean CARFAX/dealer history, reliability, resale value above 80, mileage
+            discipline, market-value pricing, and projected 5-year ownership cost.
+            All brands are considered, including luxury brands, but each VIN has to pass
+            the same clean-history, resale, roof, comfort, and ownership-risk checks.
+            The first link on every source candidate remains an exact VIN page from
+            CARFAX, a dealer, or a manufacturer CPO inventory page, but the June 9
+            in-app browser audit was blocked on CARFAX, Grubbs Acura, and Kia CPO domains.
+            Under the required primary-link audit rule, no SUV is currently active
+            until those exact VIN pages can be loaded and checked again, but the
+            retained source candidates are shown below for follow-up.
+          </p>
+        </div>
+        <aside class="hero-card" aria-label="Search constraints">
+          <span>Search radius</span>
+          <strong>50 miles</strong>
+          <span>Budget ceiling</span>
+          <strong>$40,000</strong>
+          <span>Roof rule</span>
+          <strong>Panoramic moonroof only</strong>
+          <span>History rule</span>
+          <strong>No accident/damage</strong>
+          <span>Deal rule</span>
+          <strong>CARFAX Great Value only</strong>
+        </aside>
+      </section>
+
+      <section class="stats" aria-label="Dashboard summary">
+        <article>
+          <span id="stat-count">0/20</span>
+          <p>browser-verified matches / max target</p>
+        </article>
+        <article>
+          <span id="stat-avg-price">$0</span>
+          <p>average listing price</p>
+        </article>
+        <article>
+          <span id="stat-best-reliability">0</span>
+          <p>top reliability score</p>
+        </article>
+        <article>
+          <span id="stat-lowest-tco">$0</span>
+          <p>lowest projected 5-year cost</p>
+        </article>
+      </section>
+
+      <section id="refresh-status" class="refresh-status" aria-live="polite" hidden></section>
+
+      <section class="controls" aria-label="Filter and sort controls">
+        <div class="control">
+          <label for="priceMax">Max price: <strong id="priceValue">$40,000</strong></label>
+          <input id="priceMax" type="range" min="25000" max="40000" step="500" value="40000" />
+        </div>
+        <div class="control">
+          <label for="mileageMax">Max mileage: <strong id="mileageValue">45,000 mi</strong></label>
+          <input id="mileageMax" type="range" min="10000" max="45000" step="1000" value="45000" />
+        </div>
+        <div class="control">
+          <label for="rearFit">Rear-seat fit</label>
+          <select id="rearFit">
+            <option value="all">All rear-seat layouts</option>
+            <option value="bench">Three-across bench preferred</option>
+            <option value="adult-third-row">Roomiest third row</option>
+            <option value="ok">Acceptable for three</option>
+          </select>
+        </div>
+        <div class="control">
+          <label for="sortBy">Sort by</label>
+          <select id="sortBy">
+            <option value="score">Best overall</option>
+            <option value="reliability">Reliability score</option>
+            <option value="resale">Resale value</option>
+            <option value="price">Lowest price</option>
+            <option value="tco">Lowest 5-year cost</option>
+            <option value="rearComfort">Rear comfort</option>
+            <option value="mileage">Lowest mileage</option>
+          </select>
+        </div>
+        <label class="toggle">
+          <input id="accidentFreeOnly" type="checkbox" />
+          <span>Only show public accident-free histories</span>
+        </label>
+      </section>
+
+      <section class="compare" aria-labelledby="compare-title">
+        <div>
+          <p class="eyebrow">Quick comparison</p>
+          <h2 id="compare-title">Reliability, resale, and cost</h2>
+        </div>
+        <div id="comparisonChart" class="comparison-chart" aria-live="polite"></div>
+      </section>
+
+      <section id="cards" class="cards" aria-label="Vehicle cards" aria-live="polite"></section>
+
+      <section class="notes" aria-labelledby="notes-title">
+        <div>
+          <p class="eyebrow">How to read this</p>
+          <h2 id="notes-title">Practical caveats before you drive</h2>
+        </div>
+        <ul>
+          <li>
+            Accident history on retained source candidates is based on CARFAX
+            inventory and exact VIN evidence visible during the June 8, 2026
+            late-evening CDT refresh. Any listing marked accident, minor damage,
+            major damage, branded title, salvage, rebuilt, or not-actual-mileage is
+            excluded from this dashboard.
+          </li>
+          <li>
+            The first link on every card is an exact VIN page from CARFAX,
+            a dealer-owned detail page, or a manufacturer CPO inventory page,
+            not a generic marketplace search. The June 9 in-app browser audit could
+            not complete because CARFAX, Grubbs Acura, and Kia CPO exact-page navigation
+            was blocked by browser security policy, so all prior source candidates
+            are flagged out of the active dashboard pending a fresh exact-page audit.
+          </li>
+          <li>
+            The dashboard now has 0 browser-verified active matches. It still
+            shows the prior 20 source candidates for follow-up, but those cards are
+            labeled as needing exact-link browser audit and are not counted as
+            active verified listings.
+          </li>
+          <li>
+            The default mileage cap is 45,000 miles. Cars above that are excluded
+            unless you intentionally raise the rule in a future refresh.
+          </li>
+          <li>
+            Rear comfort is prioritized over flashy trims. Pilot, Telluride, and MDX
+            are the roomiest family picks; RDX and CX-50 remain good choices only if
+            three people fit comfortably across the second row.
+          </li>
+          <li>
+            Toyota, Lexus, Honda, Acura, Kia Telluride, and Mazda CX-50-style
+            candidates were prioritized. Palisade, Nautilus, Pathfinder, CX-90,
+            rental-heavy, multiple-use, damaged, over-budget, over-mileage, weak-resale,
+            standard/small-sunroof, stale-source, Good Value, and Fair Value
+            candidates are removed from the active dashboard.
+          </li>
+          <li>
+            Roof proof is intentionally strict. Each card includes an official
+            trim/spec source for the panoramic roof; standard small sunroofs are not
+            treated as a match.
+          </li>
+          <li>
+            5-year costs are modeled estimates using listing price, EPA fuel
+            economy, expected depreciation, insurance, maintenance/repair risk,
+            and Texas-area driving assumptions. Your financing, insurance, and
+            fuel costs will vary.
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <script src="app.js?v=20260609-1245"></script>
+    <script src="fallback-candidates.js?v=20260609-1528"></script>
+  </body>
+</html>
