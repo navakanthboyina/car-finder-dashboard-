@@ -16,18 +16,19 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20"
+      - name: Clone repository
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git clone --depth 1 --branch "${GITHUB_REF_NAME:-main}" "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" .
+          node --version
 
       - name: Refresh exact VIN availability
         run: node scripts/refresh-listings.mjs
 
       - name: Commit refreshed dashboard data
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -36,5 +37,5 @@ jobs:
             echo "No dashboard refresh changes to commit."
           else
             git commit -m "Refresh vehicle listing availability"
-            git push
+            git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:"${GITHUB_REF_NAME:-main}"
           fi
