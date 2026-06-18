@@ -11,12 +11,12 @@
     ],
     "zipCode": "75038"
   },
-  "lastRunIso": "2026-06-17T18:36:06.829Z",
-  "lastRunLocal": "Jun 17, 2026, 1:36 PM",
+  "lastRunIso": "2026-06-18T05:04:36.372Z",
+  "lastRunLocal": "Jun 18, 2026, 12:04 AM",
   "results": [
     {
       "cameraSignals": [],
-      "checkedAt": "2026-06-17T18:35:56.097Z",
+      "checkedAt": "2026-06-18T05:04:35.070Z",
       "dealer": "Norm Reeves Mazda of Irving",
       "finalUrl": "https://www.carfax.com/vehicle/5J8YD9H44PL006820",
       "hasMileage": false,
@@ -32,7 +32,7 @@
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-06-17T18:35:56.285Z",
+      "checkedAt": "2026-06-18T05:04:35.338Z",
       "dealer": "Honda Cars of Rockwall",
       "finalUrl": "https://www.carfax.com/vehicle/5FNYG2H70RB007119",
       "hasMileage": false,
@@ -48,7 +48,7 @@
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-06-17T18:35:56.373Z",
+      "checkedAt": "2026-06-18T05:04:35.497Z",
       "dealer": "Graff Chevrolet Co",
       "finalUrl": "https://www.carfax.com/vehicle/5FNYG1H79SB072003",
       "hasMileage": false,
@@ -64,7 +64,7 @@
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-06-17T18:35:56.412Z",
+      "checkedAt": "2026-06-18T05:04:35.575Z",
       "dealer": "Grubbs Acura",
       "finalUrl": "https://www.carfax.com/vehicle/5J8TC2H50RL034131",
       "hasMileage": false,
@@ -80,7 +80,7 @@
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-06-17T18:35:56.471Z",
+      "checkedAt": "2026-06-18T05:04:35.634Z",
       "dealer": "Hiley Acura of Fort Worth",
       "finalUrl": "https://www.carfax.com/vehicle/5J8TC2H34RL027410",
       "hasMileage": false,
@@ -96,7 +96,7 @@
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-06-17T18:35:56.511Z",
+      "checkedAt": "2026-06-18T05:04:35.728Z",
       "dealer": "Hiley Acura of Fort Worth",
       "finalUrl": "https://www.carfax.com/vehicle/5J8TC1H50PL007454",
       "hasMileage": false,
@@ -112,7 +112,7 @@
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-06-17T18:35:56.546Z",
+      "checkedAt": "2026-06-18T05:04:35.822Z",
       "dealer": "Vanguard Kia of Arlington",
       "finalUrl": "https://www.carfax.com/vehicle/5XYP5DGC5RG500766",
       "hasMileage": false,
@@ -128,7 +128,7 @@
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-06-17T18:35:56.590Z",
+      "checkedAt": "2026-06-18T05:04:35.885Z",
       "dealer": "Moritz Kia Alliance",
       "finalUrl": "https://www.carfax.com/vehicle/5XYP5DGC2PG352783",
       "hasMileage": false,
@@ -144,7 +144,7 @@
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-06-17T18:35:56.666Z",
+      "checkedAt": "2026-06-18T05:04:35.938Z",
       "dealer": "Mesquite Kia",
       "finalUrl": "https://www.carfax.com/vehicle/5XYP54HC3NG264496",
       "hasMileage": false,
@@ -160,23 +160,23 @@
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-06-17T18:35:56.713Z",
+      "checkedAt": "2026-06-18T05:04:36.024Z",
       "dealer": "Hiley Acura of Fort Worth",
       "finalUrl": "https://www.carfax.com/vehicle/5J8TC2H59SL008522",
-      "hasMileage": true,
-      "hasPrice": true,
+      "hasMileage": false,
+      "hasPrice": false,
       "hasRequiredCamera": false,
-      "hasVin": true,
+      "hasVin": false,
       "listingUrl": "https://www.carfax.com/vehicle/5J8TC2H59SL008522",
       "name": "2025 Acura RDX Technology SH-AWD",
       "status": "needs-review",
-      "statusCode": 200,
+      "statusCode": 403,
       "unavailableSignals": [],
       "vin": "5J8TC2H59SL008522"
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-06-17T18:36:06.605Z",
+      "checkedAt": "2026-06-18T05:04:36.106Z",
       "dealer": "Norm Reeves Mazda of Irving",
       "finalUrl": "https://www.carfax.com/vehicle/7MMVABEM8SN378924",
       "hasMileage": false,
@@ -192,7 +192,7 @@
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-06-17T18:36:06.731Z",
+      "checkedAt": "2026-06-18T05:04:36.191Z",
       "dealer": "Toyota of Rockwall",
       "finalUrl": "https://www.carfax.com/vehicle/7MMVABDY1RN221573",
       "hasMileage": false,
@@ -208,7 +208,7 @@
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-06-17T18:36:06.789Z",
+      "checkedAt": "2026-06-18T05:04:36.294Z",
       "dealer": "Clay Cooley Nissan Richardson",
       "finalUrl": "https://www.carfax.com/vehicle/7MMVABEM6RN237764",
       "hasMileage": false,
