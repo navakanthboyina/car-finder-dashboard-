@@ -11,12 +11,12 @@
     ],
     "zipCode": "75038"
   },
-  "lastRunIso": "2026-07-01T04:55:23.613Z",
-  "lastRunLocal": "Jun 30, 2026, 11:55 PM",
+  "lastRunIso": "2026-07-01T11:33:26.948Z",
+  "lastRunLocal": "Jul 1, 2026, 6:33 AM",
   "results": [
     {
       "cameraSignals": [],
-      "checkedAt": "2026-07-01T04:55:21.655Z",
+      "checkedAt": "2026-07-01T11:33:25.568Z",
       "dealer": "Norm Reeves Mazda of Irving",
       "finalUrl": "https://www.carfax.com/vehicle/5J8YD9H44PL006820",
       "hasMileage": false,
@@ -32,7 +32,7 @@
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-07-01T04:55:22.193Z",
+      "checkedAt": "2026-07-01T11:33:25.753Z",
       "dealer": "Honda Cars of Rockwall",
       "finalUrl": "https://www.carfax.com/vehicle/5FNYG2H70RB007119",
       "hasMileage": false,
@@ -48,7 +48,7 @@
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-07-01T04:55:22.354Z",
+      "checkedAt": "2026-07-01T11:33:25.924Z",
       "dealer": "Graff Chevrolet Co",
       "finalUrl": "https://www.carfax.com/vehicle/5FNYG1H79SB072003",
       "hasMileage": false,
@@ -64,7 +64,7 @@
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-07-01T04:55:22.399Z",
+      "checkedAt": "2026-07-01T11:33:25.994Z",
       "dealer": "Grubbs Acura",
       "finalUrl": "https://www.carfax.com/vehicle/5J8TC2H50RL034131",
       "hasMileage": false,
@@ -80,7 +80,7 @@
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-07-01T04:55:22.455Z",
+      "checkedAt": "2026-07-01T11:33:26.100Z",
       "dealer": "Hiley Acura of Fort Worth",
       "finalUrl": "https://www.carfax.com/vehicle/5J8TC2H34RL027410",
       "hasMileage": false,
@@ -96,7 +96,7 @@
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-07-01T04:55:22.499Z",
+      "checkedAt": "2026-07-01T11:33:26.215Z",
       "dealer": "Hiley Acura of Fort Worth",
       "finalUrl": "https://www.carfax.com/vehicle/5J8TC1H50PL007454",
       "hasMileage": false,
@@ -112,7 +112,7 @@
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-07-01T04:55:22.567Z",
+      "checkedAt": "2026-07-01T11:33:26.276Z",
       "dealer": "Vanguard Kia of Arlington",
       "finalUrl": "https://www.carfax.com/vehicle/5XYP5DGC5RG500766",
       "hasMileage": false,
@@ -128,7 +128,7 @@
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-07-01T04:55:22.610Z",
+      "checkedAt": "2026-07-01T11:33:26.378Z",
       "dealer": "Moritz Kia Alliance",
       "finalUrl": "https://www.carfax.com/vehicle/5XYP5DGC2PG352783",
       "hasMileage": false,
@@ -144,7 +144,7 @@
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-07-01T04:55:22.669Z",
+      "checkedAt": "2026-07-01T11:33:26.482Z",
       "dealer": "Mesquite Kia",
       "finalUrl": "https://www.carfax.com/vehicle/5XYP54HC3NG264496",
       "hasMileage": false,
@@ -160,7 +160,7 @@
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-07-01T04:55:22.719Z",
+      "checkedAt": "2026-07-01T11:33:26.584Z",
       "dealer": "Hiley Acura of Fort Worth",
       "finalUrl": "https://www.carfax.com/vehicle/5J8TC2H59SL008522",
       "hasMileage": false,
@@ -176,7 +176,7 @@
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-07-01T04:55:22.798Z",
+      "checkedAt": "2026-07-01T11:33:26.689Z",
       "dealer": "Norm Reeves Mazda of Irving",
       "finalUrl": "https://www.carfax.com/vehicle/7MMVABEM8SN378924",
       "hasMileage": false,
@@ -192,26 +192,23 @@
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-07-01T04:55:22.839Z",
+      "checkedAt": "2026-07-01T11:33:26.747Z",
       "dealer": "Toyota of Rockwall",
       "finalUrl": "https://www.carfax.com/vehicle/7MMVABDY1RN221573",
-      "hasMileage": true,
-      "hasPrice": true,
+      "hasMileage": false,
+      "hasPrice": false,
       "hasRequiredCamera": false,
-      "hasVin": true,
+      "hasVin": false,
       "listingUrl": "https://www.carfax.com/vehicle/7MMVABDY1RN221573",
       "name": "2024 Mazda CX-50 Turbo Premium",
       "status": "needs-review",
-      "statusCode": 200,
-      "unavailableSignals": [
-        "vehicle no longer available",
-        "no longer available"
-      ],
+      "statusCode": 403,
+      "unavailableSignals": [],
       "vin": "7MMVABDY1RN221573"
     },
     {
       "cameraSignals": [],
-      "checkedAt": "2026-07-01T04:55:23.561Z",
+      "checkedAt": "2026-07-01T11:33:26.867Z",
       "dealer": "Clay Cooley Nissan Richardson",
       "finalUrl": "https://www.carfax.com/vehicle/7MMVABEM6RN237764",
       "hasMileage": false,
