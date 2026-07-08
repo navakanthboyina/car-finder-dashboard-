@@ -1,5 +1,5 @@
 const verifiedTarget = 20;
-const verifiedOn = "July 7, 2026";
+const verifiedOn = "July 8, 2026";
 const minimumResale = 81;
 const requiredDealLabel = "Great Value";
 const unavailableVins = new Set([
